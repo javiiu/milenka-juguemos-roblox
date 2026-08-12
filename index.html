@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Una pregunta seria</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+
+            font-family: Arial, Helvetica, sans-serif;
+
+            background-color: #f5f5f5;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            color: #222;
+        }
+
+
+        /* =====================================
+           CAJA PRINCIPAL
+        ===================================== */
+
+        .card {
+
+            width: 90%;
+            max-width: 600px;
+
+            background: white;
+
+            border-radius: 18px;
+
+            padding: 35px;
+
+            text-align: center;
+
+            box-shadow:
+                0 5px 25px rgba(0, 0, 0, 0.12);
+        }
+
+
+        /* =====================================
+           IMAGEN / MEME
+        ===================================== */
+
+        .roblox-image {
+
+            width: 220px;
+            height: 150px;
+
+            object-fit: cover;
+
+            border-radius: 12px;
+
+            margin-bottom: 20px;
+
+            background-color: #e9e9e9;
+        }
+
+
+        h1 {
+
+            font-size: 32px;
+
+            margin-bottom: 12px;
+        }
+
+
+        .text {
+
+            font-size: 18px;
+
+            color: #555;
+
+            line-height: 1.5;
+
+            margin-bottom: 25px;
+        }
+
+
+        /* =====================================
+           PREGUNTA
+        ===================================== */
+
+        .question {
+
+            font-size: 30px;
+
+            font-weight: bold;
+
+            margin-bottom: 30px;
+        }
+
+
+        /* =====================================
+           BOTONES
+        ===================================== */
+
+        .buttons {
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            gap: 20px;
+
+            height: 70px;
+
+            position: relative;
+        }
+
+
+        button {
+
+            border: none;
+
+            padding: 13px 28px;
+
+            border-radius: 8px;
+
+            font-size: 17px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+
+            transition: 0.2s;
+        }
+
+
+        #yesButton {
+
+            background-color: #4caf50;
+
+            color: white;
+        }
+
+
+        #yesButton:hover {
+
+            background-color: #43a047;
+
+            transform: scale(1.05);
+        }
+
+
+        #noButton {
+
+            background-color: #e0e0e0;
+
+            color: #333;
+
+            position: relative;
+        }
+
+
+        #noButton:hover {
+
+            background-color: #d5d5d5;
+        }
+
+
+        /* =====================================
+           MENSAJE CUANDO PRESIONA NO
+        ===================================== */
+
+        #warning {
+
+            display: none;
+
+            margin-top: 20px;
+
+            font-size: 17px;
+
+            color: #d32f2f;
+
+            font-weight: bold;
+        }
+
+
+        /* =====================================
+           PANTALLA FINAL
+        ===================================== */
+
+        #success {
+
+            display: none;
+        }
+
+
+        .success-title {
+
+            font-size: 35px;
+
+            margin-bottom: 20px;
+        }
+
+
+        .success-text {
+
+            font-size: 19px;
+
+            line-height: 1.6;
+
+            color: #555;
+        }
+
+
+        /* =====================================
+           CONFETI
+        ===================================== */
+
+        .confetti {
+
+            position: fixed;
+
+            top: -30px;
+
+            font-size: 25px;
+
+            animation: caer 3s linear forwards;
+
+            z-index: 100;
+        }
+
+
+        @keyframes caer {
+
+            0% {
+
+                transform:
+                    translateY(0)
+                    rotate(0deg);
+
+            }
+
+            100% {
+
+                transform:
+                    translateY(110vh)
+                    rotate(720deg);
+
+            }
+        }
+
+
+        /* =====================================
+           CELULAR
+        ===================================== */
+
+        @media (max-width: 600px) {
+
+            .card {
+
+                padding: 25px 18px;
+            }
+
+            h1 {
+
+                font-size: 27px;
+            }
+
+            .question {
+
+                font-size: 25px;
+            }
+
+            .text {
+
+                font-size: 16px;
+            }
+
+            .roblox-image {
+
+                width: 190px;
+                height: 130px;
+            }
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================
+         PÁGINA PRINCIPAL
+    ===================================== -->
+
+    <div class="card" id="questionCard">
+
+
+        <!--
+            PUEDES CAMBIAR ESTA IMAGEN.
+
+            Si quieres poner una imagen tuya,
+            reemplaza la dirección que está
+            dentro de src="..."
+
+            También puedes eliminar esta
+            etiqueta completa si no quieres imagen.
+        -->
+
+        <img
+            class="roblox-image"
+            src="acostao.jpg"
+            alt="Stay strong"
+        >
+
+
+        <h1>
+            Ya Milenka, la pregunta del millón
+        </h1>
+
+
+        <p class="text">
+
+            Una pregunta muy muy importante, pregunta de prueba pa ti
+
+            <br>
+
+            Sin presión, ya tu sabeeee
+
+        </p>
+
+
+        <div class="question">
+
+            ¿Vamo a jugar Robloxito? 
+
+        </div>
+
+
+        <!-- BOTONES -->
+
+        <div class="buttons">
+
+            <button id="yesButton">
+                SIPOOO OBVIO WATON
+            </button>
+
+
+            <button id="noButton">
+                NO, TONTO PESAO
+            </button>
+
+        </div>
+
+
+        <!--
+            ESTE MENSAJE NO APARECE AL PRINCIPIO.
+
+            Aparece solamente cuando intenta
+            presionar NO.
+        -->
+
+        <div id="warning">
+
+            CÓMOOOO? DIJISTE NO, PEKAS??
+
+            <br>
+
+            Qué pena porque esa opcion no ta disponible wuajaa
+
+        </div>
+
+
+    </div>
+
+
+    <!-- =====================================
+         PANTALLA FINAL
+    ===================================== -->
+
+    <div class="card" id="success">
+
+
+        <div class="success-title">
+
+            Sabia que ibai a decir que SI a la primera 😝
+
+        </div>
+
+
+        <div class="success-text">
+
+            Excelente decisión.
+
+            <br><br>
+
+            Ahora si te mereces unos alfajores
+            y un gloss si es que me pongo cariñoso jeee
+
+            <br><br>
+
+            Nos vemos en voley pa rankear y perder como campeones 🔥
+
+            <br><br>
+
+            <strong>
+                Nuestra amistad subió un poquito, noma por eso jawjkd +100
+            </strong>
+
+        </div>
+
+
+    </div>
+
+
+
+    <script>
+
+
+        /* =====================================
+           ELEMENTOS
+        ===================================== */
+
+        const yesButton =
+            document.getElementById("yesButton");
+
+        const noButton =
+            document.getElementById("noButton");
+
+        const warning =
+            document.getElementById("warning");
+
+        const questionCard =
+            document.getElementById("questionCard");
+
+        const success =
+            document.getElementById("success");
+
+
+        /* =====================================
+           MENSAJES DEL BOTÓN NO
+           
+           PUEDES CAMBIARLOS.
+        ===================================== */
+
+        const messages = [
+
+            "Ah te atreviste a poner que NO, mirenlaaa",
+
+            "Esa opción no está nah disponible pekas",
+
+            "Tai segurisisisima?",
+
+            "Yapo Milenka si te dije que no podi decir que NO JAJAJA",
+
+            "Que nooo ostia joer 🙄",
+
+            "Ah vai a seguir?",
+
+            "No te vai a salvar Milenka, aceptalo",
+
+            "No se puedee wuajaaa"
+
+
+        ];
+
+
+        let attempts = 0;
+
+
+
+        /* =====================================
+           CUANDO INTENTA PRESIONAR NO
+        ===================================== */
+
+        function escapeNoButton() {
+
+
+            attempts++;
+
+
+            /*
+                Mostrar el mensaje
+            */
+
+            warning.style.display = "block";
+
+
+            /*
+                Cambiar el texto
+                según la cantidad de intentos
+            */
+
+            const index =
+                Math.min(
+                    attempts - 1,
+                    messages.length - 1
+                );
+
+
+            warning.innerHTML =
+                messages[index];
+
+
+            /*
+                El botón pasa a ser
+                independiente de la caja.
+            */
+
+            noButton.style.position = "fixed";
+
+
+            /*
+                Calculamos una posición
+                aleatoria.
+            */
+
+            const maxX =
+                window.innerWidth
+                - noButton.offsetWidth
+                - 20;
+
+
+            const maxY =
+                window.innerHeight
+                - noButton.offsetHeight
+                - 20;
+
+
+            const x =
+                Math.random() * maxX;
+
+
+            const y =
+                Math.random() * maxY;
+
+
+            noButton.style.left =
+                Math.max(10, x) + "px";
+
+
+            noButton.style.top =
+                Math.max(10, y) + "px";
+
+
+            /*
+                Después de varios intentos
+                se hace más pequeño.
+            */
+
+            const scale =
+                Math.max(
+                    0.65,
+                    1 - attempts * 0.05
+                );
+
+
+            noButton.style.transform =
+                `scale(${scale})`;
+
+        }
+
+
+
+        /* =====================================
+           CLICK EN NO
+        ===================================== */
+
+        noButton.addEventListener(
+            "click",
+            function(event) {
+
+                event.preventDefault();
+
+                escapeNoButton();
+
+            }
+        );
+
+
+
+        /* =====================================
+           MOUSE SOBRE NO
+           
+           IMPORTANTE:
+
+           Esto empieza a funcionar SOLO
+           después del primer click.
+        ===================================== */
+
+        noButton.addEventListener(
+            "mouseenter",
+            function() {
+
+                if (attempts > 0) {
+
+                    escapeNoButton();
+
+                }
+
+            }
+        );
+
+
+
+        /* =====================================
+           CELULARES
+        ===================================== */
+
+        noButton.addEventListener(
+            "touchstart",
+            function(event) {
+
+                event.preventDefault();
+
+                escapeNoButton();
+
+            }
+        );
+
+
+
+        /* =====================================
+           BOTÓN SÍ
+        ===================================== */
+
+        yesButton.addEventListener(
+            "click",
+            function() {
+
+
+                questionCard.style.display =
+                    "none";
+
+
+                success.style.display =
+                    "block";
+
+
+                createConfetti();
+
+            }
+        );
+
+
+
+        /* =====================================
+           CONFETI
+        ===================================== */
+
+        function createConfetti() {
+
+
+            const emojis = [
+
+                "🎮",
+                "🎉",
+                "✨",
+                "⭐",
+                "😂",
+                "🗿",
+                "💜"
+
+            ];
+
+
+            for (let i = 0; i < 80; i++) {
+
+
+                const piece =
+                    document.createElement("div");
+
+
+                piece.className =
+                    "confetti";
+
+
+                piece.innerText =
+                    emojis[
+                        Math.floor(
+                            Math.random()
+                            * emojis.length
+                        )
+                    ];
+
+
+                piece.style.left =
+                    Math.random() * 100 + "vw";
+
+
+                piece.style.animationDuration =
+                    Math.random() * 2 + 2 + "s";
+
+
+                piece.style.animationDelay =
+                    Math.random() * 1 + "s";
+
+
+                document.body.appendChild(
+                    piece
+                );
+
+
+                setTimeout(
+                    function() {
+
+                        piece.remove();
+
+                    },
+                    5000
+                );
+
+            }
+
+        }
+
+    </script>
+
+</body>
+
+</html>
